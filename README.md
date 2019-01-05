@@ -24,7 +24,7 @@ Have fun! It's just code. If something goes horrifically wrong, you can always c
 1. Clone down this repository.
 2. Change directories so you are inside the project folder.
 2. The first time you do this, you'll need to run `npm install` so that you have Typescript set up.
-2. `tsc` will compile the TypeScript source files. (Please see note below.)
+2. `./node_modules/.bin/tsc` will compile the TypeScript source files. (If you have a global version of Typescript, you can just do `tsc`)
 3. `npm start` will start your server.
 4. <kbd>Ctrl</kbd>+<kbd>c</kbd> to shut off the server.
 
