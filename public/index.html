@@ -4,11 +4,21 @@
   <head>
     <meta charset="UTF-8">
     <title>Minimal Repo</title>
-    <style> * { font-family: sans-serif } </style>
+    <link href="css/index.css"
+          type="text/css"
+          rel="stylesheet" />
   </head>
 
   <body>
-    <h1>Hello, world!</h1>
+    <main>
+      <header>
+        <h1>Hello, world!</h1>
+
+        <nav>
+          <a href="about.html">About</a>
+        </nav>
+      </header>
+    </main>
   </body>
 
   <footer>
@@ -16,7 +26,8 @@
       This will work -- as long as we are actually _serving_ the files from a
       a web-server, _not_ the file system.
     -->
-    <script type="module" src="src/index.js"></script>
+    <script type="module"
+            src="src/index.js"></script>
 
     <!--
       This won't work (without type="module") -- the background will stay white,
@@ -26,4 +37,5 @@
     -->
     <!-- <script src="src/index.js" id="FAILING_EXAMPLE_SCRIPT"></script> -->
   </footer>
+
 </html>

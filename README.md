@@ -1,6 +1,30 @@
-# A Typescript setup with no dependencies
+# Dependency-free Typescript setup
 
-This is a truly minimal, dependency-free setup that will provide the skeleton for you to write your code in Typescript, compile it to Javascript, and use that compiled code in a browser environment. No webpack, no loaders, etc.
+This is a _truly_ minimal, **dependency-free** setup that will provide the skeleton for you to:
+* write your code in Typescript
+* compile it for browser use
+* use that compiled code in a browser environment.
+
+There's no magic here. No Webpack, no loaders, no routing libraries necessary, etc. (If you don't know what those are, don't worry -- the _point_ of this repository is so you don't have to.)
+
+To add an HTML page -- you make a new HTML page. To link to it, you link to it like you would on a basic HTML site, because this _is_ a basic HTML site.
+
+To add some CSS -- you add a CSS file, and link to it like you would in a normal, vanilla HTML project, because this _is_ a normal, vanilla HTML project -- that happens to use Javascript that was compiled from Typescript.
+
+This server won't do anything fancy: it won't reload for you, it won't minify or uglify anything.
+
+It will serve files for you, and that's it.
+
+Use it as a base, or an exercise, or an experiment; don't use it in production!
+
+Have fun, tinker, break the server in strange and fascinating ways if you want; go wild! It's just code. If something goes horrifically wrong, just clone this down again!
+
+
+## Why?
+
+There's nothing wrong with tools like Webpack and others -- but using them is a skill itself.
+
+Trying to work with a new language can be hard, and being prevented from doing so because you don't _also_ know how to set up other tools can be truly rage-inducing.
 
 ## What this is
 
@@ -11,17 +35,13 @@ There are other ways to do this; however, I wanted to create a setup that:
 * was simple enough for folks curious about servers to follow along with
 * was small so it could be easi*er* to wrap your head around
 
+If you have a global installation of Typescript, you could skip using `npm` entirely.
+
 Here, I used Node for the server, since I know Typescript itself uses Node, and so if we're using Typescript, it's safe to assume Node is present.
 
 If you have another server-side language that you prefer, you can use the same ideas and concepts.
 
-If you have a global installation of Typescript, you could skip using `npm` entirely.
-
-This is _not_ a robust server. It won't do anything fancy: no live-reloading; no fancy or complex requests; if a file isn't found, it'll serve a boring plain-text error and a status code of 500; etc., etc. In fact, I'm pretty sure it won't even handle images.
-
-Use it as a base, or an exercise, or an experiment; don't use it in production!
-
-Have fun, tinker, break the server in strange and fascinating ways if you want; go wild! It's just code. If something goes horrifically wrong, just clone this down again!
+This is _not_ a robust server. It won't do anything fancy: no live-reloading; no fancy or complex requests; if a file isn't found, it'll serve a boring plain-text error and a status code of 500; etc., etc. In fact, I'm pretty sure it won't even handle images (at the moment).
 
 ### Why are there two server files?
 
@@ -125,85 +145,3 @@ Specifically, you need to:
   * Else
     * Get the file requested
     * Send the response with that file data
-
-```javascript
-// server/index.js
-
-/*
-  These are Node system modules -- we `require` them first thing because if they
-  aren't present at all, we want to fail very loudly right off the bat instead
-  of failing later on when we actually need to use them.
-*/
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-const url = require('url');
-
-const PORT = 3000;
-const SERVER_ROOT_FOLDER = './public';
-
-const getType = extension => {
-  const map = {
-    css: 'text/css',
-    js: 'text/javascript',
-    html: 'text/html',
-    plain: 'text/plain'
-  };
-
-  if (extension in map) {
-    return map[extension];
-  } else {
-    return map.plain;
-  }
-};
-
-const isModuleRequest = request => {
-  // 'referer' is the correct spelling for the header.
-  const { referer } = request.headers;
-
-  if (!referer) {
-    return false;
-  }
-
-  return referer.endsWith('.js');
-};
-
-const getPath = request => {
-  const parsedUrl = url.parse(request.url);
-
-  if (isModuleRequest(request)) {
-    return `${SERVER_ROOT_FOLDER}${parsedUrl.pathname}.js`;
-  } else {
-    return `${SERVER_ROOT_FOLDER}${parsedUrl.pathname}`;
-  }
-};
-
-const requestHandler = (request, response) => {
-  console.log(`${request.method} ${request.url}`);
-
-  if (request.url === '/favicon.ico') {
-    response.statusCode = 404;
-    response.end();
-    return;
-  }
-
-  const filePath = getPath(request);
-  const extension = path.parse(filePath).ext.replace('.', '');
-  const contentType = getType(extension);
-
-  fs.readFile(filePath, (error, fileData) => {
-    if (error) {
-      console.error(error);
-      response.statusCode = 500; // internal server error
-      response.end('There was an error getting the request file.');
-    } else {
-      response.setHeader('Content-Type', contentType);
-      response.end(fileData);
-    }
-  });
-};
-
-http.createServer(requestHandler).listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
-```
