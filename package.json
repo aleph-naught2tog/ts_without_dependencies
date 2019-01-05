@@ -1,0 +1,21 @@
+{
+  "name": "ts_without_dependencies",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "dependencies": {
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server",
+    "redo_server_file": "tsc --allowJs --target esnext --removeComments --outFile server/index.js server/index.doc.js"
+  },
+  "keywords": [],
+  "author": "aleph-naught2tog",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aleph-naught2tog/ts_without_dependencies.git"
+  }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Minimal Repo</title>
+    <style> * { font-family: sans-serif } </style>
+  </head>
+
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+
+  <footer>
+    <!--
+      This will work -- as long as we are actually _serving_ the files from a
+      a web-server, _not_ the file system.
+    -->
+    <script type="module" src="src/index.js"></script>
+
+    <!--
+      This won't work (without type="module") -- the background will stay white,
+      and you will probably see an
+        `Uncaught SyntaxError: Unexpected token {` error
+      in the browser console.
+    -->
+    <!-- <script src="src/index.js" id="FAILING_EXAMPLE_SCRIPT"></script> -->
+  </footer>
+</html>
