@@ -41,7 +41,7 @@ Here, I used Node for the server, since I know Typescript itself uses Node, and 
 
 If you have another server-side language that you prefer, you can use the same ideas and concepts.
 
-This is _not_ a robust server. It won't do anything fancy: no live-reloading; no fancy or complex requests; if a file isn't found, it'll serve a boring plain-text error and a status code of 500; etc., etc. In fact, I'm pretty sure it won't even handle images (at the moment).
+This is _not_ a robust server. It won't do anything fancy: no live-reloading; no fancy or complex requests; if a file isn't found, it'll serve a boring plain-text error and a status code of 500; etc., etc.
 
 ### Why are there two server files?
 
