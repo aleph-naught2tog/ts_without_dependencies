@@ -7,7 +7,7 @@ This is a _truly_ minimal, **dependency-free** setup that will provide the skele
 
 That's it. This server won't do anything fancy: it won't reload for you, it won't minify or uglify anything.
 
-It _will_ serve files for you, and that's it. You can ignore the server entirely if you want; or, if you think writing your own server sounds neat, the second half of the README is worth checking out.
+It _will_ serve files for you, and that's it. You can ignore the server entirely if you want; or, if you think writing your own server sounds neat, the [second half of the README](#about-the-server) is worth checking out.
 
 There's no magic here. No Webpack, no loaders, no routing libraries necessary, etc. (If you don't know what those are, don't worry -- the _point_ of this repository is so you don't have to.) There's nothing wrong with using those tools, but they add complexity, and they can _extremely_ frustrating to use when all you really want is to be able to type some things and see what happens.
 
@@ -44,7 +44,7 @@ You shouldn't need to touch the server code unless you _want_ to.
 
 (If you _do_ want to, please go nuts -- there's a second annotated copy of the server code that also includes references, etc., for you to use as a guide if you like, and an included command via `npm` (explained below) to regenerate a clean, comment-free version of the source if you want.)
 
-## About
+## About the server
 
 ### FYI
 
