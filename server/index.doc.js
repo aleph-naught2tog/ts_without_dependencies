@@ -104,7 +104,12 @@ const getPath = request => {
   if (isModuleRequest(request)) {
     return `${SERVER_ROOT_FOLDER}${parsedUrl.pathname}.js`;
   } else {
-    return `${SERVER_ROOT_FOLDER}${parsedUrl.pathname}`;
+    // This ensures that navigating to "localhost:PORT" just loades the homepage
+    if (parsedUrl.pathname === '/') {
+      return `${SERVER_ROOT_FOLDER}${parsedUrl.pathname}index.html`;
+    } else {
+      return `${SERVER_ROOT_FOLDER}${parsedUrl.pathname}`;
+    }
   }
 };
 
