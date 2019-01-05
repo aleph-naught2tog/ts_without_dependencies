@@ -42,23 +42,16 @@ If you get sick of having to recompile manually, you can run `tsc --watch` in on
 
 You shouldn't need to touch the server code unless you _want_ to.
 
-(If you _do_ want to, please go nuts -- there's a second annotated copy of the server code that also includes references, etc., for you to use as a guide if you like, and an included command via `npm` (explained below) to regenerate a clean, comment-free version of the source if you want.)
+* _No_ live-reloading (that's in another repo, which I will link once up). This means you have to refresh the webpage to see any changes you've made.
+* Once your server is running, you shouldn't need to start or stop it, unless something goes wrong _or_ you change part of the server code (`server/index.js`) itself.
 
 ## About the server
 
-### FYI
-
-If you have a global installation of Typescript, you could skip using `npm` entirely.
-
-Here, I used Node for the server, since I know Typescript itself uses Node, and so if we're using Typescript, it's safe to assume Node is present.
-
-If you have another server-side language that you prefer, you can use the same ideas and concepts.
-
 This is _not_ a robust server. It won't do anything fancy: no live-reloading; no fancy or complex requests; if a file isn't found, it'll serve a boring plain-text error and a status code of 500; etc., etc.
 
-* _No_ live-reloading (that's in another repo, which I will link once up). This means you have to refresh the webpage to see any changes you've made.
-* Unless you are running the Typescript compiler on `watch`, you need to recompile your Typescript files if you change them.
-* Once your server is running, you shouldn't need to start or stop it, unless something goes wrong _or_ you change part of the server code (`server/index.js`) itself.
+Here, I used Node for the server, since I know Typescript itself uses Node, and so if we're using Typescript, it's safe to assume Node is present. Also, since we install it with `npm`, it made the most sense. If you have a global installation of Typescript, you could skip using `npm` entirely.
+
+If you have another server-side language that you prefer, you can use the same ideas and concepts.
 
 ### Why are there two server files?
 
