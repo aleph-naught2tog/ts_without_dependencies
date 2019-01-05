@@ -3,37 +3,50 @@
 This is a _truly_ minimal, **dependency-free** setup that will provide the skeleton for you to:
 * write your code in Typescript
 * compile it for browser use
-* use that compiled code in a browser environment.
+* use that compiled code in a browser environment
 
-There's no magic here. No Webpack, no loaders, no routing libraries necessary, etc. (If you don't know what those are, don't worry -- the _point_ of this repository is so you don't have to.)
+That's it. This server won't do anything fancy: it won't reload for you, it won't minify or uglify anything.
+
+It _will_ serve files for you, and that's it. You can ignore the server entirely if you want; or, if you think writing your own server sounds neat, the second half of the README is worth checking out.
+
+There's no magic here. No Webpack, no loaders, no routing libraries necessary, etc. (If you don't know what those are, don't worry -- the _point_ of this repository is so you don't have to.) There's nothing wrong with using those tools, but they add complexity, and they can _extremely_ frustrating to use when all you really want is to be able to type some things and see what happens.
 
 To add an HTML page -- you make a new HTML page. To link to it, you link to it like you would on a basic HTML site, because this _is_ a basic HTML site.
 
 To add some CSS -- you add a CSS file, and link to it like you would in a normal, vanilla HTML project, because this _is_ a normal, vanilla HTML project -- that happens to use Javascript that was compiled from Typescript.
 
-This server won't do anything fancy: it won't reload for you, it won't minify or uglify anything.
+Use this project as a base, or an exercise, or an experiment; don't use it in production!
 
-It will serve files for you, and that's it.
+Have fun! It's just code. If something goes horrifically wrong, you can always clone this down again.
 
-Use it as a base, or an exercise, or an experiment; don't use it in production!
+## How to use
 
-Have fun, tinker, break the server in strange and fascinating ways if you want; go wild! It's just code. If something goes horrifically wrong, just clone this down again!
+1. Clone down this repository.
+2. Change directories so you are inside the project folder.
+2. The first time you do this, you'll need to run `npm install` so that you have Typescript set up.
+2. `tsc` will compile the TypeScript source files. (Please see note below.)
+3. `npm start` will start your server.
+4. <kbd>Ctrl</kbd>+<kbd>c</kbd> to shut off the server.
 
+### Typescript
 
-## Why?
+Your Typescript files should go in the `src` folder. Everything else should be in the `public` folder -- HTML, images, CSS, etc.
 
-There's nothing wrong with tools like Webpack and others -- but using them is a skill itself.
+**Remember, Typescript is a *compiled* language.**
 
-Trying to work with a new language can be hard, and being prevented from doing so because you don't _also_ know how to set up other tools can be truly rage-inducing.
+That means that if you change your Typescript files, you have to compile them again before those changes show up in the browser when you refresh the page. You should not need to restart the server itself.
 
-## What this is
+If you get sick of having to recompile manually, you can run `tsc --watch` in one terminal tab/window and do `npm start` in another. That tells Typescript to watch for file changes, and recompile when it sees some.
 
-There are other ways to do this; however, I wanted to create a setup that:
-* relied _only_ on:
-  * Typescript
-  * a _minimal_, local server
-* was simple enough for folks curious about servers to follow along with
-* was small so it could be easi*er* to wrap your head around
+### The server
+
+You shouldn't need to touch the server code unless you _want_ to.
+
+(If you _do_ want to, please go nuts -- there's a second annotated copy of the server code that also includes references, etc., for you to use as a guide if you like, and an included command via `npm` (explained below) to regenerate a clean, comment-free version of the source if you want.)
+
+## About
+
+### FYI
 
 If you have a global installation of Typescript, you could skip using `npm` entirely.
 
@@ -42,6 +55,10 @@ Here, I used Node for the server, since I know Typescript itself uses Node, and 
 If you have another server-side language that you prefer, you can use the same ideas and concepts.
 
 This is _not_ a robust server. It won't do anything fancy: no live-reloading; no fancy or complex requests; if a file isn't found, it'll serve a boring plain-text error and a status code of 500; etc., etc.
+
+* _No_ live-reloading (that's in another repo, which I will link once up). This means you have to refresh the webpage to see any changes you've made.
+* Unless you are running the Typescript compiler on `watch`, you need to recompile your Typescript files if you change them.
+* Once your server is running, you shouldn't need to start or stop it, unless something goes wrong _or_ you change part of the server code (`server/index.js`) itself.
 
 ### Why are there two server files?
 
@@ -56,27 +73,6 @@ The second one, `server/index.js`, includes the actual code that runs. It is _id
 This also means you can experiment like nuts in the `server/index.js` file without worrying about breaking things irrevocably. You can always clone down a new version, but maybe you have files you want to keep; or maybe you're just too frustrated but want to keep everything else.
 
 You can run `npm run-script redo_server_file` from your terminal: this will generate a _new_ `server/index.js` based off `index.doc.js` but with no comments, and _completely overwrite the old `server/index.js`_.
-
-### FYI
-
-* _No_ live-reloading (that's in another repo, which I will link once up). This means you have to refresh the webpage to see any changes you've made.
-* Unless you are running the Typescript compiler on `watch`, you need to recompile your Typescript files if you change them.
-* Once your server is running, you shouldn't need to start or stop it, unless something goes wrong _or_ you change part of the server code (`server/index.js`) itself.
-
-## How to use
-
-1. Clone down this repository.
-2. `tsc` will compile the TypeScript source files. (Please see note below.)
-3. `npm start` will start your server.
-4. <kbd>Ctrl</kbd>+<kbd>c</kbd> to shut off the server.
-
-Your Typescript files should go in the `src` folder.
-
-**Remember, Typescript is a *compiled* language.**
-
-That means that if you change your Typescript files, you have to compile them again before those changes show up in the browser when you refresh the page. You should not need to restart the server itself.
-
-If you get sick of having to recompile manually, you can run `tsc --watch` in one terminal tab/window and do `npm start` in another. That tells Typescript to watch for file changes, and recompile when it sees some.
 
 ## Explanation
 
