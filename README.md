@@ -118,7 +118,7 @@ You can add other settings, too; just make sure they don't interfere with those,
 
 ## Server file
 
-**If servers are new to you, that is awesome! I'm so excited you are going to try working with your own local server. You probably want to look at the existing server files in this repository, not this section; but if this section helps you, too, great!**
+**If servers are new to you, that is awesome! I'm so excited you are going to try working with your own local server. You probably want to look at the existing server files in this repository as a basis. This section is aimed for folks who might want to try making a server to handle this but in a different language -- but if this helps you, too, wahoo!**
 
 This section is if you care about _why_ we're doing this, or if you want to use a different server set-up. It goes over the parts that are necessary for this to work. I'm going to assume that if you have a server-side language of choice, you know how to set up the minimum server in it one way or another.
 
