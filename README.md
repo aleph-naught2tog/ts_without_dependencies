@@ -42,8 +42,10 @@ If you get sick of having to recompile manually, you can run `tsc --watch` in on
 
 You shouldn't need to touch the server code unless you _want_ to.
 
-* _No_ live-reloading (that's in another repo, which I will link once up). This means you have to refresh the webpage to see any changes you've made.
+* _No_ live-reloading (that's in another repo, linked below). This means you have to refresh the webpage to see any changes you've made.
 * Once your server is running, you shouldn't need to start or stop it, unless something goes wrong _or_ you change part of the server code (`server/index.js`) itself.
+
+(If you want to try or look at the hot-reloading version, that is now available [here](https://github.com/aleph-naught2tog/reloading_ts_without_dependencies). Fair warning, hot reloading adds a couple moving parts, making it more complex)
 
 ## About the server
 
