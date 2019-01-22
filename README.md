@@ -24,7 +24,7 @@ Have fun! It's just code. If something goes horrifically wrong, you can always c
 1. Clone down this repository.
 2. Change directories so you are inside the project folder.
 2. The first time you do this, you'll need to run `npm install` so that you have Typescript set up.
-2. `./node_modules/.bin/tsc` will compile the TypeScript source files. (If you have a global version of Typescript, you can just do `tsc`)
+2. `npx tsc` will compile the TypeScript source files. (If you have a global version of Typescript, you can just do `tsc`)
 3. `npm start` will start your server.
 4. <kbd>Ctrl</kbd>+<kbd>c</kbd> to shut off the server.
 
@@ -36,7 +36,7 @@ Your Typescript files should go in the `src` folder. Everything else should be i
 
 That means that if you change your Typescript files, you have to compile them again before those changes show up in the browser when you refresh the page. You should not need to restart the server itself.
 
-If you get sick of having to recompile manually, you can run `tsc --watch` in one terminal tab/window and do `npm start` in another. That tells Typescript to watch for file changes, and recompile when it sees some.
+If you get sick of having to recompile manually, you can run `npx tsc --watch` in one terminal tab/window and do `npm start` in another. That tells Typescript to watch for file changes, and recompile when it sees some.
 
 ### The server
 
