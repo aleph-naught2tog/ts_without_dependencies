@@ -4,6 +4,7 @@ const path = require('path');
 const url = require('url');
 
 const PORT = 3000;
+const SRC_BUILD_FOLDER_PATTERN = '/src/';
 const SERVER_ROOT_FOLDER = './public';
 
 const determineContentType = extension => {
@@ -27,7 +28,7 @@ const isModuleRequest = request => {
   if (!referer) {
     return false;
   } else {
-    return referer.endsWith('.js');
+    return referer.includes(SRC_BUILD_FOLDER_PATTERN);
   }
 };
 

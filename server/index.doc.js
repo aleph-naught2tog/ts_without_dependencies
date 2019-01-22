@@ -22,6 +22,13 @@ const url = require('url');   // docs: https://nodejs.org/api/url.html
 const PORT = 3000;
 
 /**
+ * This is how we determine whether or not a module is being requested. This doesn't need to be a full path -- just something unique to identify a request by. If the folder your compiled script end up in is `src`, then the referer will contain `/src/`. (Those slashes are slashes as in a folder path, _not_ as in a regular expression delimiter.)
+ *
+ * @constant {string} SRC_BUILD_FOLDER_PATTERN
+ */
+const SRC_BUILD_FOLDER_PATTERN = '/src/';
+
+/**
  * This is the 'root' of the server; it is what all other paths are relative to.
  *
  * @constant {string} SERVER_ROOT_FOLDER
@@ -75,12 +82,13 @@ const determineContentType = extension => {
  */
 const isModuleRequest = request => {
   // `referer` is the header that represents who made the request
+  /** @type {string} */
   const referer = request.headers.referer;
 
   if (!referer) {
     return false;
   } else {
-    return referer.endsWith('.js');
+    return referer.includes(SRC_BUILD_FOLDER_PATTERN);
   }
 
 };
